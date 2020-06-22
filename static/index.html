@@ -1,0 +1,60 @@
+<html>
+  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
+  <script src="https://threejs.org/build/three.js"></script>
+  <script src="https://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+  <script src="https://threejs.org/examples/js/loaders/MTLLoader.js"></script>
+  <script src="https://claeb008.github.io/objs/OrbitControls.js"></script>
+  <head>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="background"></div>
+    <div id="canvas_holder"></div>
+    <p id="ServerError" class="connecting">Connecting...</p>
+    <div style="float: right"></div>
+    <div style="float: right;z-index:6"><button class="bLeft" onclick="LoadInputMenu(inputmenu.style.visibility=='visible'?-1:5)">Map Settings</button><button class="bLeft" onclick="LogIn()">Log In</button><button class="bRight" onclick="LogOut()">Log Out</button><img id="p_Photo" style="border-radius: 50%; margin-right: 10px;" onclick="LoadInputMenu(inputmenu.style.visibility=='visible'?-1:0)"></div>
+
+    <div id="menubody" class="dd_body"></div>
+    <div id="menubar" onmouseover="overMenu=true"><div id="desc_helper" style="border:dashed 1px gray"></div><div id="logo"><img src="Logo.png"><!--LGCP ONLINE 6--></div></div>
+
+    <div id="inputmenu"></div>
+    <div style="z-index:3;width:100%;height:100%;position:fixed;visibility:hidden"><div id="sinputmenu"></div></div>
+    <div id="pathEditor" onmouseover="overMenu=true">
+      <button style="float:right" onclick="pathEditor.style.visibility = 'hidden'">Exit</button>
+      <h5 style="padding:5px;margin:0;display:inline-block">PATH EDITOR</h5>
+      <hr style="margin:5px 0 5px 0"></hr>
+      <div style="float:right;width:20%;height:100%;background-color:red"></div>
+      <div style="width:80%;height:100%;background-color:green"></div>
+    </div>
+
+    <div class="sidemenu" onmouseover="overMenu=true"><button onclick="SideMenu(this.parentNode.childNodes[1])">></button><div class="sidecontent">
+      <span style="padding:5px">Map Hierarchy</span>
+      <br><br>
+      <div id="mapHierarchy"></div><!--<div id="pieceEdit" style="height:100px"></div>-->
+    </div>
+
+    </div>
+    <div class="sidecontent2" onmouseover="overMenu=true">
+      <button onclick="SideMenu(this.parentNode.childNodes[3])" style="position:absolute;bottom:0;margin-bottom:103px;">></button>
+      <div id="pieceEdit"><span style="padding:5px">Piece Properties</span><div class="conte"></div></div>
+    </div>
+
+
+    <!--<div id="d_createGame" style="visibility: hidden"><br>You are currently in the <span style="color: dodgerblue; border-bottom: solid 1px dodgerblue;">EDITOR</span>. Switch to the PLAYER? <button onclick="window.location = '../Play'">Switch to PLAYER</button><br><br>Name of Game: <input type="text" id="i_Game" onFocus="typing=true" onBlur="typing=false"><br><br>EDIT Password of Game: <input type="password" id="i_Pass" onFocus="typing=true" onBlur="typing=false"> (Not required if no password) (Used as a password to edit the map)<br><br>VIEW Password of Game: <input type="password" id="i_PassView" onFocus="typing=true" onBlur="typing=false"> (Not required if no password or joining) (Used as the game ref password when creating Play maps)<br><br><button id="CreateRoom" onclick="CreateRoom()">Create Game</button><button id="JoinRoom" onclick="JoinRoom()">Join Game</button></div>-->
+
+    <div id="l_saveOutcome" class="FadeLabel">Save Success</div>
+
+
+    <!--<p style="width: 20px">LGCP ONLINE EDITION 6!!!</p>
+    <button class="bSingle" onclick="socket.emit('chat message','hi there')">Send</button>-->
+
+    <div class="windowButtons"><button onclick="pathEditor.style.visibility = 'visible'"">Path</button></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="Water.js"></script>
+    <script src="Sky.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

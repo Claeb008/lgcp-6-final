@@ -1,0 +1,19 @@
+{
+  "name": "lgcp-e6",
+  "version": "1.0.0",
+  "description": "LGCP Edition 6 Online",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "RECTAGON PRODUCTIONS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase-admin": "^8.12.1",
+    "fs": "0.0.1-security",
+    "localtunnel": "^2.0.0",
+    "socket.io": "^2.3.0"
+  }
+}

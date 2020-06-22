@@ -1,0 +1,376 @@
+* {
+  position: relative;
+  z-index: 1;
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+#p_Photo {
+  width: 20px;
+  height: 20px;
+  float: right;
+  transition: border 0.5s;
+  transform: translate(0,20%);
+  margin-left:2px;
+  cursor:pointer;
+}
+#p_Photo:hover {
+  border: solid 1px lightgray;
+}
+.FadeLabel {
+  opacity: 0;
+  transition: opacity 0.2s;
+  margin-left: 50%;
+  bottom: 0;
+  padding: 5px;
+  background-color: lightgreen;
+  border: solid 1px green;
+  position: absolute;
+}
+#ServerError {
+  border-top: 1px solid gray;
+  background-color: lightgray;
+  padding: 5px;
+  height: 18px;
+  transition: height 0.5s;
+  z-index: 1;
+  width:100%;
+  position:fixed;
+  bottom: 0;
+  margin-bottom: 0px;
+}
+#ServerError.connecting {
+  border-top: 1px solid gray;
+  background-color: lightgray;
+}
+#ServerError.connected {
+  background-color: lightgreen;
+  border: none;
+  border-top: 1px solid green;
+  height: 2px;
+  padding: 0;
+}
+#ServerError.disconnected {
+  border-top: 1px solid red;
+  background-color: pink;
+}
+#canvas_holder {
+  position: absolute;
+  margin: 0;
+  z-index: 0;
+  transition: filter 2s;
+}
+#inputmenu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 200px;
+  background-color: rgba(255,255,255,0.5);
+  /*backdrop-filter: blur(2px);*/
+  border-radius: 5px;
+  border: solid 1px lightgray;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  visibility: hidden;
+  z-index: 2;
+  transition: opacity 1s;
+  opacity: 1;
+  overflow:scroll;
+}
+#sinputmenu{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 5px;
+  border: solid 1px lightgray;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+input{
+  display:inline-block;
+  width:50%;
+  background-color: rgba(255,255,255,0.5);
+  border: solid 1px lightgray;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+  margin:2px;
+}
+button {
+  outline: none;
+  background-color: rgba(255,255,255,0.5);
+  border: solid 1px lightgray;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+  transition: box-shadow 0.2s;
+  padding: 5px;
+}
+button:hover {
+  border-color: seagreen;
+  background-color: lightseagreen;
+  box-shadow: 0px 4px 2px rgba(0,0,0,0.5);
+  color: white;
+}
+.blueB:hover {
+  border-color: blue;
+  background-color: dodgerblue;
+}
+.redB:hover {
+  border-color: red;
+  background-color: tomato;
+}
+.grayB:hover {
+  border-color: rgb(80,80,80);
+  background-color: darkgray;
+}
+.bLeft {
+  border-right: none;
+  margin-left: 5px;
+}
+.bRight {
+  border-left: none;
+  margin-right: 5px;
+}
+.bCenter {
+  border-left: none;
+  border-right: none;
+}
+#menubar{
+  height: auto;
+  width: 100%;
+  border-bottom: dashed 1px darkgray;
+  background-color: rgba(230,230,230,0.5);
+}
+#menubar > div{
+  border-right: solid 1px lightgray;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 2;
+}
+#menubar > div:hover{
+  background-color: white;
+}
+#menubody{
+  position: absolute;
+  border: solid 1px lightgray;
+  background-color: rgba(230,230,230,0.5);
+  visibility: hidden;
+  z-index:4;
+  max-height:50%;
+  overflow-y: scroll;
+  min-width:70px;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+}
+#menubody > div.ml{
+  cursor: pointer;
+  padding: 5px;
+  border-bottom:solid 1px gray;
+}
+#menubody > div.ml:hover{
+  background-color: tomato;
+  color: white;
+}
+/*::-webkit-scrollbar {
+    width: 10px;
+}*/
+/*::-webkit-scrollbar-thumb {
+    background: lightgray;
+}*/
+/*::-webkit-scrollbar-thumb:hover {
+    background: lightsalmon;
+}*/
+#tb{
+  z-index: 15;
+  width:0px;
+  height:0px;
+  border-radius: 50px;
+  background-color:dodgerblue;
+  position: absolute;
+  transition: width 1s, height 1s, border-radius 2s;
+}
+#tb.d{
+  width:100%;
+  height:100%;
+  border-radius: 0px;
+}
+#logo{
+  height:17px;
+}
+#logo > img{
+  height:15px;
+  position: relative;
+}
+.sidemenu{
+  margin-top:0px;
+  position: absolute;
+  width:0px;
+  height:0px;
+}
+.sidecontent{
+  margin-top:1px;
+  background-color:rgba(255,255,255,0.5);
+  border: solid 1px lightgray;
+  border-top-right-radius: 5px;
+  visibility: hidden;
+  width:200px;
+  min-height:75%;/*700px*/
+}
+.sidecontent2{
+  position: absolute;
+  bottom:0;
+}
+/*.peLabel{
+  position: absolute;
+  background-color:rgba(255,255,255,0.5);
+  border: solid 1px lightgray;
+  width:200px;
+  bottom:0;
+  margin-bottom:100px;
+  border-bottom:none;
+}*/
+#pieceEdit{
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:200px;
+  height: 100px;
+  background-color:rgba(255,255,255,0.5);
+  border: solid 1px lightgray;
+  border-top: solid 1px darkgray;
+  visibility: hidden;
+}
+#pieceEdit .conte{
+  overflow-y:scroll;
+  height:80px;
+  width:200px;
+}
+#mapHierarchy{
+  /*max-height: 650px;*/
+  max-height:75%;
+  overflow-y:scroll;
+  scroll-behavior: smooth;
+}
+#mapHierarchy > div{
+  display:block;
+  border-bottom: solid 1px gray;
+}
+#mapHierarchy > div > div.cdM{
+  padding:5px;
+  user-select: none;
+}
+#mapHierarchy > div > div.cdM:hover{
+  background-color:rgba(255,255,255,0.5);
+  cursor:pointer;
+}
+#mapHierarchy.sel > div > div.cdM{
+  background-color:rgba(120,120,120,0.5);
+}
+#mapHierarchy.sel > div > div.cdM:hover{
+  background-color:rgba(120,120,255,0.5);
+}
+#swatch{ /*#swatch*/
+  position: absolute;
+  width:300px;
+  height:200px;
+  background-color:rgba(230,230,230,0.5);
+  border:solid 1px lightgray;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+  z-index: 20;
+}
+#swatch > div{ /*#swatch*/
+  width:20px;
+  height:20px;
+  border:solid 1px white;
+  margin:5px;
+  margin-top:10px;
+  display: inline-block;
+  z-index: 0;
+  transition: width 0.2s, height 0.2s, box-shadow 0.2s
+}
+#swatch .lab{ /*#swatch*/
+  position: absolute;
+  visibility: hidden;
+  margin-top: -20px;
+  padding:2px;
+  background-color:white;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+  z-index: 0;
+}
+.label{
+  position: absolute;
+  padding:5px;
+  background-color: rgba(255,255,255,0.5);
+  border: solid 1px lightgray;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+  visibility: hidden;
+}
+/*#swatch .lab span{
+
+}
+#swatch .lab:hover{
+  visibility: visible;
+  color:white;
+  border:solid 1px black;
+  background-color:tomato;
+  z-index: 10;
+}*/
+
+.reRen{
+  z-index:999;
+  width:100px;
+  height:100px;
+  position:absolute;
+  border:solid 1px lightgray;
+  border-radius: 2px;
+  opacity: 1;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.5);
+}
+.windowButtons{
+  position: absolute;
+  z-index: 999;
+  right:0;
+  bottom:0;
+}
+#pathEditor{
+  position:absolute;
+  background-color:cornflowerblue;
+  z-index:1;
+  border:solid 1px gray;
+  opacity:0.75;
+  visibility:hidden;
+}
+#desc_helper{
+  background-color:rgba(255,255,255,0.5);
+  min-width:50px;
+  height:50px;
+  position:absolute;
+  margin-left:370px;
+}
+.settingsList > div{
+  background-color:white;
+  box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  margin-top:5px;
+  padding:10px;
+  border:solid 1px gray;
+  border-radius:3px;
+}
+.settingsList br{
+  line-height:10px;
+}
+input:active{
+  border:solid 1px black;
+}
+#mapDesc_i{
+  width:100%;
+  height:auto;
+}
