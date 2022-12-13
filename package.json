@@ -10,7 +10,7 @@
   "author": "RECTAGON PRODUCTIONS",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase-admin": "^8.12.1",
     "fs": "0.0.1-security",
     "localtunnel": "^2.0.0",
